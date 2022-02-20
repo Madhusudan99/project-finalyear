@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %} {% block content %}
+<h1>Load From File!</h1>
+<form action="/loadFileResult/" method="post">
+  {% csrf_token %}
+  <input list="file_list" name="entered_file_name" >
+  <datalist id="file_list">
+    {% for file in files %}
+    <option value="{{ file }} "></option>
+
+    {% endfor %} {% comment %}
+    <option value="Firefox"></option>
+    <option value="Chrome"></option>
+    <option value="Opera"></option>
+    <option value="Safari"></option>
+    {% endcomment %}
+  </datalist>
+
+  <input type="submit">
+</form>
+
+{% endblock content %}

@@ -1,0 +1,104 @@
+{% extends 'blog/base.html' %} {% block content %}
+<h1>Results</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">LIMIT BALANCE</th>
+      <th scope="col">GENDER</th>
+      <th scope="col">EDUCATION</th>
+      <th scope="col">MARRIAGE</th>
+      <th scope="col">AGE</th>
+      <th scope="col">PREDICTION</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for data in datas %}
+
+    {% if data.DEFAULT_NONDEFAULT == 0 %}
+        <tr>
+        <th scope="row">{{ data.ID }}</th>
+        <td>{{ data.LIMIT_BAL }}</td>
+            {% if data.SEX == 1 %}
+            <td>MALE</td>
+            {% elif data.SEX == 2 %}
+            <td>FEMALE</td>
+            {% endif %}
+
+            {% if data.EDUCATION == 1 %}
+            <td>GRADUATE SCHOOL</td>
+            {% elif data.EDUCATION == 2 %}
+            <td>UNIVERSITY</td>
+            {% elif data.EDUCATION == 3 %}
+            <td>HIGH SCHOOL</td>
+            {% elif data.EDUCATION == 4 %}
+            <td>OTHERS</td>
+            {% endif %}
+
+
+            {% if data.MARRIAGE == 1 %}
+            <td>MARRIED</td>
+            {% elif data.MARRIAGE == 2 %}
+            <td>SINGLE</td>
+            {% elif data.MARRIAGE == 3 %}
+            <td>OTHERS</td>
+            {% endif %}
+
+
+        <td>{{ data.AGE }}</td>
+
+        
+        <td>NON-DEFAULTER</td>
+
+        </tr> 
+    {% endif %}
+
+    {% if data.DEFAULT_NONDEFAULT == 1 %}
+
+        <tr class="table-danger">
+        <th scope="row">{{ data.ID }}</th>
+        <td>{{ data.LIMIT_BAL }}</td>
+            {% if data.SEX == 1 %}
+            <td>MALE</td>
+            {% elif data.SEX == 2 %}
+            <td>FEMALE</td>
+            {% endif %}
+
+            {% if data.EDUCATION == 1 %}
+            <td>GRADUATE SCHOOL</td>
+            {% elif data.EDUCATION == 2 %}
+            <td>UNIVERSITY</td>
+            {% elif data.EDUCATION == 3 %}
+            <td>HIGH SCHOOL</td>
+            {% elif data.EDUCATION == 4 %}
+            <td>OTHERS</td>
+            {% endif %}
+
+
+            {% if data.MARRIAGE == 1 %}
+            <td>MARRIED</td>
+            {% elif data.MARRIAGE == 2 %}
+            <td>SINGLE</td>
+            {% elif data.MARRIAGE == 3 %}
+            <td>OTHERS</td>
+            {% endif %}
+
+
+        <td>{{ data.AGE }}</td>
+
+        <td>DEFAULTER</td>
+
+        </tr> 
+    {% endif %}
+
+    
+
+
+{% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock content %}
